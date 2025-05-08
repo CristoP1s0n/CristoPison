@@ -103,20 +103,29 @@ $(function () {
 			alert( "submitted!" );
 		}
 	} );
-	document.getElementById('contactForm').addEventListener('submit', function (e) {	
-		e.preventDefault(); 
+	document.getElementById('contactForm').addEventListener('submit', function (e) {
+		e.preventDefault(); // Prevent the default form submission
+	
 		const name = document.getElementById('name').value.trim();
 		const email = document.getElementById('email').value.trim();
+		const phone = document.getElementById('phone').value.trim();
 		const message = document.getElementById('message').value.trim();
-		const phone = document.getElementById('phone').checked;	
-
-		if(!name || !email || !message || !phone) {
-			alert('tolong isi semuanya!');
+	
+		// Validate the form inputs
+		if (!name || !email || !phone || !message) {
+			alert('Tolong isi semua field!');
 			return;
 		}
-		alert('terima kasih telah menghubungi kami!');
-		this.reset();
 	
+		// Simulate sending the message (replace this with actual API call if needed)
+		const isMessageSent = Math.random() > 0.5; // Simulate success or failure randomly
+	
+		if (isMessageSent) {
+			alert('Terima kasih telah menghubungi kami!');
+			this.reset(); // Clear the form inputs
+		} else {
+			alert('Pesan tidak dapat dikirim. Silakan coba lagi nanti.');
+		}
 	});
 	
 	$( document ).ready( function () {
